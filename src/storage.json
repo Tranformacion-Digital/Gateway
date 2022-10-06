@@ -1,0 +1,7 @@
+{
+    "topicRecord": "/prueba/handlerdata/recordsprocess",
+    "topicAdd": "/prueba/handlerdata/addproducto",
+    "topicCharger": "/prueba/handlerdata/chargerawmaterial",
+    "topicPerformance": "/prueba/handlerdata/performance",
+    "topicQuality": "/prueba/handlerdata/qualityproduct"
+}
