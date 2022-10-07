@@ -78,13 +78,13 @@ broker.on('published', (packet) => {
         // let obj;
 
         switch (topic) {
-            case "TEMPERATURA-REACTOR":
+            case "temperatura-reactor":
                 let data = message.split("-");
                 message = {
                     "id": "34",
                     "temperatura": data[0],
                     "time_proceso": "hoy",
-                    "Lote": lote
+                    "Lote": data[1]
                 }
                 break;
         
