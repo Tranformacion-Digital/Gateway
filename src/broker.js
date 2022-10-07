@@ -1,7 +1,7 @@
 const mosca = require('mosca');
 const http = require('https');
 const mqtt = require('mqtt');
-const topics = require("../src/storage.json")
+const topics = require("../src/storage/topics.json")
 
 const topicRecord = 'record';
 const topicAdd = 'addProduct';
@@ -69,7 +69,32 @@ broker.on('published', (packet) => {
     console.clear();
     console.log(`MQTT:Desde el topic '${topic}', se envia el mensaje\n${message}`);
 
-    selectTopic(topic);
+    // selectTopic(topic);
+
+    if (topics[topic]) {
+        optionsAWS.path = topics[topic];
+    } else {
+
+        // let obj;
+
+        switch (topic) {
+            case "TEMPERATURA-REACTOR":
+                let data = message.split("-");
+                message = {
+                    "id": "34",
+                    "temperatura": data[0],
+                    "time_proceso": "hoy",
+                    "Lote": lote
+                }
+                break;
+        
+            default:
+                console.log(`\n%c${'El topic es incorrecto'}`)
+                break;
+            }
+            
+        console.log(message)
+    }
 })
 
 const hostMQTT = `mqtt://${ip}:1234`;
