@@ -3,5 +3,10 @@
     "topicAdd": "/prueba/handlerdata/addproducto",
     "topicCharger": "/prueba/handlerdata/chargerawmaterial",
     "topicPerformance": "/prueba/handlerdata/performance",
-    "topicQuality": "/prueba/handlerdata/qualityproduct"
+    "topicQuality": "/prueba/handlerdata/qualityproduct",
+    "temperaturaReactor": "/prueba/handlerdata/recordsprocess",
+    "materiaPrima": "/prueba/handlerdata/chargerawmaterial",
+    "addProduct": "/prueba/handlerdata/addproducto",
+    "performance": "/prueba/handlerdata/performance",
+    "qualityProduct": "/prueba/handlerdata/qualityproduct"
 }
