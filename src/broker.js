@@ -70,6 +70,8 @@ function connectMQTT(){
     })
 }
 
+// let contador = 0
+
 function messageMQTT(){
     // moment.locale("en")
     client.on('message', (topic, message) => {
@@ -77,13 +79,15 @@ function messageMQTT(){
         let data = message.toString().split("-");
         let lote = `L${data[0]}`
         let id = `${moment().format("YYDDDHHmmss")}`;
-        let time = moment().format("DD-MMMM-YYYY HH:mm:ss");
+        let time = moment().format("DD-MM-YYYY HH:mm:ss");
 
         switch (topic) {
             case topicTemperatura:
+                // console.log(typeof(data[1]))
+                // contador = contador + 10;
                 message = {
                     "id": id,
-                    "temperatura": data[1],
+                    "temperatura": parseInt(data[1]),
                     "time_proceso": time,
                     "Lote": lote,
                     "topic": "record"
@@ -96,7 +100,7 @@ function messageMQTT(){
                     "id": id,
                     "Materiaprima": data[1],
                     "responsable": data[3],
-                    "catidad_kg" : data[2],
+                    "catidad_kg" : parseInt(data[2]),
                     "time_proceso": time,
                     "Lote_Materiaprima": `${item[0]}${item[1]}${item[2]}${data[0]}`,
                     "Lote": lote,
@@ -107,7 +111,7 @@ function messageMQTT(){
                 message = {
                     "id": id,
                     "add_producto": data[1],
-                    "catidad_kg": data[2],
+                    "catidad_kg": parseInt(data[2]),
                     "lote_add_producto": `L${data[3]}`,
                     "Lote": lote,
                     "topic": "addProduct"
@@ -117,7 +121,7 @@ function messageMQTT(){
                 message = {
                     "id": id,
                     "producto": data[2],
-                    "Rendimiento_kg": data[1],
+                    "Rendimiento_kg": parseInt(data[1]),
                     "time_proceso": time,
                     "Lote": lote,
                     "topic": "performance"
@@ -127,7 +131,7 @@ function messageMQTT(){
                 message = {
                     "id": id,
                     "producto": data[2],
-                    "Quality": data[1],
+                    "Quality": parseInt(data[1]),
                     "time_proceso": time,
                     "Lote": lote,
                     "topic": "qualityproduct"
